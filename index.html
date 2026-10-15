@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🔐 CyberVault — Il tuo caveau cifrato</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="card">
+
+    <!-- ============ SCHERMATA 1: UNLOCK ============ -->
+    <div id="unlockScreen">
+      <h1>🔐 CyberVault</h1>
+      <p class="subtitle">Il tuo caveau di password, cifrato con AES-256</p>
+
+      <label for="masterPassword">Master Password</label>
+      <input type="password" id="masterPassword" placeholder="La tua unica password da ricordare...">
+
+      <p id="unlockHint" class="hint"></p>
+
+      <button id="unlockBtn" class="btn">🔓 Apri il vault</button>
+      <p id="unlockError" class="error"></p>
+    </div>
+
+    <!-- ============ SCHERMATA 2: VAULT ============ -->
+    <div id="vaultScreen" class="hidden">
+      <div class="header">
+        <h1>🔐 CyberVault</h1>
+        <button id="lockBtn" class="btn-small">🔒 Blocca</button>
+      </div>
+
+      <!-- Form per aggiungere una nuova entry -->
+      <h2>➕ Nuova password</h2>
+      <input type="text" id="siteName" placeholder="Sito (es. github.com)">
+      <input type="text" id="siteUser" placeholder="Username / Email">
+      <div class="gen-row">
+        <input type="text" id="sitePass" placeholder="Password">
+        <button id="generateBtn" class="btn-small" title="Genera password sicura">🎲</button>
+      </div>
+      <p id="genStrength" class="strength"></p>
+      <button id="addBtn" class="btn">💾 Salva nel vault</button>
+      <p id="addError" class="error"></p>
+
+      <!-- Lista delle entry salvate -->
+      <h2>🗄️ Le tue password</h2>
+      <div id="entries"></div>
+
+      <!-- Breach check -->
+      <h2>🚨 Verifica data breach</h2>
+      <input type="password" id="checkPass" placeholder="Password da verificare">
+      <button id="checkBtn" class="btn">Controlla se è trapelata</button>
+      <p id="checkResult" class="hint"></p>
+
+      <!-- Export cifrato -->
+      <h2>📤 Backup cifrato</h2>
+      <button id="exportBtn" class="btn">Scarica backup</button>
+      <p class="hint">Il file è cifrato: senza la master password è inutilizzabile.</p>
+    </div>
+  </main>
+
+  <script src="crypto.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
